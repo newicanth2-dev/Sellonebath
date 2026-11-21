@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>จัดการหมวดหมู่ | คุ้มเว่อร์ 1 บาท</title>
+  <link rel="icon" type="image/png" href="../Logo.png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script type="module" src="../assets/js/admin-categories.js"></script>
+</head>
+<body class="admin-body">
+  <header class="site-header"><a class="brand" href="../index.html"><img src="../Logo.png" alt="คุ้มเว่อร์ 1 บาท" class="brand-logo"></a><div class="header-actions"><a class="back-link" href="../index.html">ดูหน้าร้าน ↗</a><button class="button button-outline" data-logout>ออกจากระบบ</button></div></header>
+  <main class="admin-main">
+    <aside class="admin-sidebar">
+      <p class="eyebrow">WORKSPACE</p>
+      <a href="dashboard.html">
+        <span class="nav-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="9"></rect>
+            <rect x="14" y="3" width="7" height="5"></rect>
+            <rect x="14" y="12" width="7" height="9"></rect>
+            <rect x="3" y="16" width="7" height="5"></rect>
+          </svg>
+        </span>
+        ภาพรวม
+      </a>
+      <a href="products.html">
+        <span class="nav-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </span>
+        จัดการสินค้า
+      </a>
+      <a class="active" href="categories.html">
+        <span class="nav-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </span>
+        หมวดหมู่
+      </a>
+    </aside>
+    <section class="admin-content">
+      <div class="admin-title-row">
+        <div>
+          <p class="eyebrow">CATEGORIES</p>
+          <h1>จัดการหมวดหมู่</h1>
+          <p class="panel-hint">หมวดหมู่ที่ซ่อนจะไม่แสดงให้ผู้เข้าชมเห็น</p>
+        </div>
+        <button type="button" class="button button-dark admin-button" id="btn-open-category-modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          เพิ่มหมวดหมู่
+        </button>
+      </div>
+      <section class="admin-panel table-panel category-list-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">YOUR CATALOG</p>
+            <h2>รายการหมวดหมู่</h2>
+          </div>
+          <!-- Filter Tabs -->
+          <div class="category-filter-tabs" id="category-filter-tabs">
+            <button type="button" class="cat-filter-tab active" data-filter="all">ทั้งหมด (<span id="count-all">0</span>)</button>
+            <button type="button" class="cat-filter-tab" data-filter="parent">📁 หมวดหมู่หลัก (<span id="count-parent">0</span>)</button>
+            <button type="button" class="cat-filter-tab" data-filter="sub">↳ หมวดหมู่ย่อย (<span id="count-sub">0</span>)</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 56px;">รูปภาพ</th>
+                <th>ชื่อหมวดหมู่</th>
+                <th style="width: 170px;">ประเภท</th>
+                <th>Slug</th>
+                <th style="width: 100px;">สถานะ</th>
+                <th style="width: 150px; text-align: right;">จัดการ</th>
+              </tr>
+            </thead>
+            <tbody id="category-list">
+              <tr><td colspan="6">กำลังโหลด...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Modal Popup เพิ่ม / แก้ไขหมวดหมู่ -->
+  <div class="admin-modal-overlay" id="category-modal" hidden>
+    <div class="admin-modal-card" role="dialog" aria-modal="true" aria-labelledby="category-modal-title">
+      <div class="admin-modal-header">
+        <div>
+          <span class="eyebrow" id="category-modal-eyebrow">NEW CATEGORY</span>
+          <h2 id="category-modal-title">เพิ่มหมวดหมู่</h2>
+        </div>
+        <button type="button" class="admin-modal-close" id="category-modal-close" aria-label="ปิดหน้าต่าง">✕</button>
+      </div>
+
+      <form id="category-form" class="admin-modal-body">
+        <input type="hidden" name="id" id="category-id">
+
+        <label>
+          ชื่อหมวดหมู่ <span class="required">*</span>
+          <input name="name" id="category-name-input" maxlength="100" required placeholder="เช่น สินค้าไอที, เสื้อผ้าแฟชั่น">
+        </label>
+
+        <label>
+          หมวดหมู่หลัก (หากต้องการให้เป็นหมวดหมู่ย่อย)
+          <select name="parent_id" id="category-parent-select">
+            <option value="">-- ไม่มี (เป็นหมวดหมู่หลัก) --</option>
+          </select>
+        </label>
+
+        <label>
+          Slug (สร้างให้อัตโนมัติ หรือแก้ไขเอง) <span class="required">*</span>
+          <input name="slug" id="category-slug-input" maxlength="120" pattern="[a-zA-Z0-9-]+" required placeholder="เช่น electronics">
+        </label>
+
+        <label>
+          สถานะ
+          <select name="status" id="category-status-select">
+            <option value="active">เปิดใช้งาน</option>
+            <option value="hidden">ซ่อน</option>
+          </select>
+        </label>
+
+        <!-- อัปโหลดรูปหมวดหมู่ -->
+        <div class="category-image-section modal-image-sec">
+          <span class="field-label">รูปภาพประจำหมวดหมู่</span>
+          <div class="category-preview-wrap">
+            <div class="category-image-preview modal-preview-box" id="category-preview-box">
+              <img id="category-preview-img" alt="ตัวอย่างรูปหมวดหมู่" hidden>
+              <span id="category-preview-placeholder">🖼️ ยังไม่มีรูป</span>
+            </div>
+            <div class="category-image-inputs">
+              <label class="file-input-label">
+                📁 เลือกไฟล์รูปภาพ (JPG, PNG, WebP)
+                <input type="file" name="image_file" id="category-image-file" accept="image/jpeg,image/png,image/webp">
+              </label>
+              <label>หรือระบุ URL รูปภาพ
+                <input type="url" name="image_url" id="category-image-url" placeholder="https://... หรืออัปโหลดไฟล์ด้านบน">
+              </label>
+              <button type="button" class="button button-outline button-sm" id="clear-category-img" style="display:none; align-self: flex-start;">✕ นำรูปออก</button>
+            </div>
+          </div>
+        </div>
+
+        <label>
+          คำอธิบาย (ถ้ามี)
+          <textarea name="description" id="category-desc-input" rows="2" maxlength="1000" placeholder="คำอธิบายสั้นๆ ของหมวดหมู่"></textarea>
+        </label>
+
+        <div class="admin-modal-actions">
+          <button type="button" class="button button-outline" id="category-modal-cancel">ยกเลิก</button>
+          <button type="submit" class="button button-dark admin-button" id="category-modal-submit" disabled>บันทึกหมวดหมู่</button>
+        </div>
+
+        <p class="form-message" id="category-message" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Popup เพิ่มหมวดย่อย -->
+  <div class="admin-modal-overlay" id="subcat-modal" hidden>
+    <div class="admin-modal-card" role="dialog" aria-modal="true" aria-labelledby="subcat-modal-title">
+      <div class="admin-modal-header">
+        <div>
+          <span class="eyebrow" id="subcat-modal-eyebrow">NEW SUBCATEGORY</span>
+          <h2 id="subcat-modal-title">เพิ่มหมวดย่อย</h2>
+        </div>
+        <button type="button" class="admin-modal-close" id="subcat-modal-close" aria-label="ปิดหน้าต่าง">✕</button>
+      </div>
+
+      <form id="subcat-modal-form" class="admin-modal-body">
+        <input type="hidden" name="parent_id" id="modal-parent-id">
+        
+        <div class="modal-parent-banner">
+          <span class="banner-icon">📁</span>
+          <div>
+            <small>หมวดหมู่หลัก</small>
+            <strong id="modal-parent-name">—</strong>
+          </div>
+        </div>
+
+        <label>
+          ชื่อหมวดย่อย <span class="required">*</span>
+          <input name="name" id="modal-subcat-name" maxlength="100" required placeholder="เช่น เสื้อยืด, นาฬิกาข้อมือ">
+        </label>
+
+        <label>
+          Slug (สร้างให้อัตโนมัติ หรือแก้ไขเอง) <span class="required">*</span>
+          <input name="slug" id="modal-subcat-slug" maxlength="120" pattern="[a-zA-Z0-9-]+" required placeholder="เช่น t-shirt">
+        </label>
+
+        <label>
+          สถานะ
+          <select name="status" id="modal-subcat-status">
+            <option value="active">เปิดใช้งาน</option>
+            <option value="hidden">ซ่อน</option>
+          </select>
+        </label>
+
+        <!-- อัปโหลดรูปหมวดย่อย -->
+        <div class="category-image-section modal-image-sec">
+          <span class="field-label">รูปภาพประจำหมวดย่อย (ถ้ามี)</span>
+          <div class="category-preview-wrap">
+            <div class="category-image-preview modal-preview-box" id="modal-preview-box">
+              <img id="modal-preview-img" alt="ตัวอย่างรูป" hidden>
+              <span id="modal-preview-placeholder">🖼️ ยังไม่มีรูป</span>
+            </div>
+            <div class="category-image-inputs">
+              <label class="file-input-label">
+                📁 เลือกไฟล์รูปภาพ (JPG, PNG, WebP)
+                <input type="file" name="image_file" id="modal-image-file" accept="image/jpeg,image/png,image/webp">
+              </label>
+              <label>หรือระบุ URL รูปภาพ
+                <input type="url" name="image_url" id="modal-image-url" placeholder="https://...">
+              </label>
+              <button type="button" class="button button-outline button-sm" id="modal-clear-img" style="display:none; align-self: flex-start;">✕ นำรูปออก</button>
+            </div>
+          </div>
+        </div>
+
+        <label>
+          คำอธิบาย (ถ้ามี)
+          <textarea name="description" id="modal-subcat-desc" rows="2" maxlength="1000" placeholder="คำอธิบายสั้นๆ ของหมวดย่อย"></textarea>
+        </label>
+
+        <div class="admin-modal-actions">
+          <button type="button" class="button button-outline" id="modal-cancel-btn">ยกเลิก</button>
+          <button type="submit" class="button button-dark admin-button" id="modal-submit-btn">บันทึกหมวดย่อย</button>
+        </div>
+
+        <p class="form-message" id="modal-message" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

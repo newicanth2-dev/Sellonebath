@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | คุ้มเว่อร์ 1 บาท</title>
+  <link rel="icon" type="image/png" href="../Logo.png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script type="module" src="../assets/js/admin-dashboard.js"></script>
+</head>
+<body class="admin-body">
+  <header class="site-header"><a class="brand" href="../index.html"><img src="../Logo.png" alt="คุ้มเว่อร์ 1 บาท" class="brand-logo"></a><div class="header-actions"><a class="back-link" href="../index.html">ดูหน้าร้าน ↗</a><button class="button button-outline" data-logout>ออกจากระบบ</button></div></header>
+  <main class="admin-main">
+    <aside class="admin-sidebar">
+      <p class="eyebrow">WORKSPACE</p>
+      <a class="active" href="dashboard.html">
+        <span class="nav-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="9"></rect>
+            <rect x="14" y="3" width="7" height="5"></rect>
+            <rect x="14" y="12" width="7" height="9"></rect>
+            <rect x="3" y="16" width="7" height="5"></rect>
+          </svg>
+        </span>
+        ภาพรวม
+      </a>
+      <a href="products.html">
+        <span class="nav-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </span>
+        จัดการสินค้า
+      </a>
+      <a href="categories.html">
+        <span class="nav-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </span>
+        หมวดหมู่
+      </a>
+    </aside>
+    <section class="admin-content"><div class="admin-title-row"><div><p class="eyebrow">OVERVIEW</p><h1>ภาพรวมร้านค้า</h1><p class="panel-hint">สรุปสถานะข้อมูลสินค้าในระบบ</p></div></div>
+      <div class="metric-grid" id="dashboard-metrics">
+        <div class="metric-card"><small>📦 สินค้าทั้งหมด</small><strong>—</strong></div>
+        <div class="metric-card"><small>🟢 เผยแพร่อยู่</small><strong>—</strong></div>
+        <div class="metric-card"><small>📁 หมวดหมู่ทั้งหมด</small><strong>—</strong></div>
+        <div class="metric-card"><small>🔥 ยอดคลิกไปซื้อรวม</small><strong id="metric-total-clicks">—</strong></div>
+      </div>
+
+      <!-- ส่วนสินค้าที่คนคลิกไปซื้อมากที่สุด (Top Affiliate Clicks) -->
+      <section class="admin-panel table-panel" style="margin-bottom: 24px;">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">AFFILIATE PERFORMANCE</p>
+            <h2>🔥 สินค้ายอดนิยม (คนคลิกไปซื้อมากที่สุด)</h2>
+          </div>
+          <span class="panel-hint">อัปเดตตามการคลิกจริงของลูกค้า</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>สินค้า</th>
+                <th style="width: 140px;">แพลตฟอร์ม</th>
+                <th style="width: 120px;">ราคา</th>
+                <th style="width: 130px; text-align: center;">จำนวนคลิกไปซื้อ</th>
+                <th style="width: 140px;">คลิกล่าสุด</th>
+              </tr>
+            </thead>
+            <tbody id="top-clicked-products">
+              <tr><td colspan="5">กำลังโหลดสถิติ...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="admin-panel table-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">LATEST</p>
+            <h2>สินค้าเพิ่มล่าสุด</h2>
+          </div>
+          <a class="text-link" href="products.html">จัดการสินค้า →</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>สินค้า</th>
+                <th>แหล่งที่มา</th>
+                <th>ราคา</th>
+                <th>สถานะ</th>
+                <th>เพิ่มเมื่อ</th>
+              </tr>
+            </thead>
+            <tbody id="latest-products">
+              <tr><td colspan="5">กำลังโหลด...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="form-message" id="dashboard-message" role="status"></p>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

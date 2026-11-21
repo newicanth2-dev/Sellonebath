@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ค้นหาและเลือกดูสินค้าสุดคุ้มจากร้านค้าชั้นนำ เริ่มต้นเพียง 1 บาท ที่คุ้มเว่อร์ 1 บาท">
+  <title>คุ้มเว่อร์ 1 บาท | รวมของดีราคาประหยัดจากหลายร้าน</title>
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="apple-touch-icon" href="Logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#dc2626">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="คุ้มเว่อร์ 1฿">
+  <meta property="og:title" content="คุ้มเว่อร์ 1 บาท | รวมของดีราคาประหยัดเริ่มต้น 1 บาท">
+  <meta property="og:description" content="ค้นหาและเลือกดูสินค้าสุดคุ้มจาก Shopee, Lazada, TikTok เริ่มต้นเพียง 1 บาท พร้อมเช็คค่าจัดส่ง">
+  <meta property="og:image" content="Logo.png">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/desktop.css" media="(min-width: 769px)">
+  <link rel="stylesheet" href="assets/css/mobile.css" media="(max-width: 768px)">
+  <script type="module" src="assets/js/category.js"></script>
+  <script type="module">
+    import { initPWA } from './assets/js/pwa.js';
+    initPWA();
+  </script>
+</head>
+<body class="page-catalog">
+  <header class="site-header">
+    <div class="header-main-row">
+      <a class="brand" href="index.html" aria-label="คุ้มเว่อร์ 1 บาท หน้าแรก">
+        <img src="Logo.png" alt="คุ้มเว่อร์ 1 บาท" class="brand-logo">
+      </a>
+
+      <!-- Header Value Props / Trust Badges -->
+      <div class="header-badges" aria-label="จุดเด่นของเว็บ">
+        <div class="header-badge-item">
+          <span class="badge-icon" aria-hidden="true">🎯</span>
+          <div class="badge-text">
+            <strong><span class="badge-long">เริ่มต้น 1 บาท</span><span class="badge-short">1 บาท</span></strong>
+            <small>คัดเฉพาะของถูกจริง</small>
+          </div>
+        </div>
+        <div class="header-badge-item">
+          <span class="badge-icon" aria-hidden="true">🚚</span>
+          <div class="badge-text">
+            <strong><span class="badge-long">มีบอกค่าจัดส่ง</span><span class="badge-short">ค่าส่ง</span></strong>
+            <small>รวมส่ง / ส่งฟรีเพียบ</small>
+          </div>
+        </div>
+        <div class="header-badge-item">
+          <span class="badge-icon" aria-hidden="true">🛡️</span>
+          <div class="badge-text">
+            <strong><span class="badge-long">ร้านค้าทางการ</span><span class="badge-short">ร้านแท้</span></strong>
+            <small>Shopee · Lazada · TikTok</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+
+    <!-- Sidebar: Quick Filters -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-content" id="sidebar-content">
+        <div class="sidebar-header-row">
+          <p class="sidebar-title">⚡ ตัวกรองด่วน <span>(Quick Filters)</span></p>
+          <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" aria-label="ปิดตัวกรอง">✕</button>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-section-label">หมวดหมู่</p>
+          <div id="sidebar-categories">
+            <label class="sidebar-check"><input type="radio" name="sidebar-cat" value=""> ทั้งหมด</label>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-section-label">ค่าจัดส่ง</p>
+          <label class="sidebar-check"><input type="radio" name="sidebar-shipping" value="" checked> ทั้งหมด</label>
+          <label class="sidebar-check"><input type="radio" name="sidebar-shipping" value="free"> รวมส่ง / ส่งฟรี 🚚</label>
+          <label class="sidebar-check"><input type="radio" name="sidebar-shipping" value="paid"> ไม่รวมค่าจัดส่ง 📦</label>
+        </div>
+
+        <button type="button" class="sidebar-clear-btn" id="sidebar-clear">ล้างตัวกรอง (Clear Filters)</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="catalog-main">
+
+      <form class="catalog-controls" id="catalog-form">
+        <!-- Row 1: Search Bar (Shopee Minimal Full Width) -->
+        <div class="search-filter-row">
+          <label class="search-bar compact">
+            <span class="search-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input id="search-input" type="search" placeholder="ค้นหาสินค้า ผ้า, นาฬิกา, ของใช้..." aria-label="ค้นหาสินค้า">
+            <button type="button" class="search-clear-btn" id="search-clear-btn" aria-label="ล้างคำค้นหา" hidden>✕</button>
+            <button type="submit" class="search-submit-btn" aria-label="ค้นหา">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </label>
+        </div>
+
+        <!-- Row 2: Category Chips (ซ่อน — เปิดจาก full-screen modal เมื่อกดค้นหา) -->
+        <div class="category-chip-bar" id="category-chip-bar">
+          <div class="chip-row-wrapper" id="chip-cat-wrapper">
+            <div class="chip-group" id="chip-cat-group">
+              <button type="button" class="filter-chip active" data-cat="">ทั้งหมด</button>
+              <button type="button" class="filter-chip chip-fav" id="chip-fav-filter" data-filter="fav">❤️ ที่ถูกใจ (<span id="fav-count">0</span>)</button>
+            </div>
+            <div class="scroll-edge-fade" aria-hidden="true"><span class="edge-arrow">›</span></div>
+          </div>
+        </div>
+
+        <!-- Row 3: Slim Sort & Free Shipping Toolbar (Shopee Standard 3-Tab Balance) -->
+        <div class="sort-toolbar-wrapper">
+          <div class="sort-toolbar" id="sort-toolbar">
+            <div class="sort-toolbar-inner">
+              <button type="button" class="sort-tab active" data-sort="popular">ยอดนิยม</button>
+              <button type="button" class="sort-tab" data-sort="newest">ใหม่ล่าสุด</button>
+              <button type="button" class="sort-tab shipping-tab" id="quick-shipping-tab" data-shipping="free">🚚 รวมส่ง</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden selects — ใช้โดย JS ทำงานเหมือนเดิม -->
+        <label class="select-label">หมวดหมู่
+          <select id="category-filter">
+            <option value="">ทั้งหมด</option>
+          </select>
+        </label>
+        <label class="select-label">เรียงตาม
+          <select id="sort-order">
+            <option value="popular">ยอดนิยม</option>
+            <option value="newest">เพิ่มล่าสุด</option>
+            <option value="price-asc">ราคาต่ำไปสูง</option>
+            <option value="price-desc">ราคาสูงไปต่ำ</option>
+          </select>
+        </label>
+      </form>
+
+      <!-- Product scroll area — เลื่อนได้ ไม่กระทบ sticky search bar -->
+      <div class="catalog-scroll">
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+
+        <div class="product-grid" id="all-products" aria-live="polite">
+          <div class="state-card">กำลังโหลดสินค้า...</div>
+        </div>
+
+        <nav class="pagination" id="pagination" aria-label="เปลี่ยนหน้าสินค้า"></nav>
+      </div>
+    </main>
+
+  </div>
+
+  <footer class="site-footer">
+    <a class="brand" href="index.html">
+      <img src="Logo.png" alt="คุ้มเว่อร์ 1 บาท" class="brand-logo">
+    </a>
+    <p>คุ้มเว่อร์ 1 บาท เว็บไซต์แนะนำและรวบรวมสินค้า การสั่งซื้อและจัดส่งดำเนินการโดยร้านค้าต้นทาง</p>
+    <small>© <span data-year></span> คุ้มเว่อร์ 1 บาท</small>
+  </footer>
+
+  <!-- Full-Screen Category Modal (เปิดเมื่อจิ้มที่ช่องค้นหา) -->
+  <div class="category-modal-overlay" id="category-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="เลือกหมวดหมู่สินค้า">
+    <div class="category-modal-dialog">
+      <!-- Modal Header -->
+      <div class="category-modal-header">
+        <div class="category-modal-search-row">
+          <label class="modal-search-bar">
+            <span aria-hidden="true">⌕</span>
+            <input id="modal-search-input" type="search" placeholder="พิมพ์ชื่อสินค้า หรือค้นหาหมวดหมู่..." aria-label="ค้นหาสินค้าหรือหมวดหมู่">
+            <button type="button" class="modal-search-clear" id="modal-search-clear" hidden aria-label="ล้างคำค้นหา">✕</button>
+          </label>
+          <button type="button" class="category-modal-close" id="category-modal-close" aria-label="ปิดหน้าต่างหมวดหมู่">✕</button>
+        </div>
+        <div class="category-modal-quick-tags">
+          <button type="button" class="modal-quick-tag active" data-cat="">⚡ ดีลทั้งหมด</button>
+          <button type="button" class="modal-quick-tag" data-cat="fav">❤️ ที่ถูกใจ (<span id="modal-fav-count">0</span>)</button>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="category-modal-body" id="category-modal-body">
+        <!-- Main Categories View -->
+        <div class="modal-view" id="modal-view-main">
+          <div class="category-modal-section-title">
+            <span>🏷️ เลือกดูตามหมวดหมู่</span>
+            <span class="category-modal-count-hint" id="modal-cat-count-hint"></span>
+          </div>
+          <div class="category-grid" id="category-grid">
+            <!-- Rendered dynamically with images by category.js -->
+          </div>
+        </div>
+
+        <!-- Subcategories View (แสดงเมื่อแตะหมวดหลักที่มีหมวดย่อย) -->
+        <div class="modal-view" id="modal-view-sub" hidden>
+          <div class="sub-nav-header">
+            <button type="button" class="sub-back-btn" id="sub-back-btn">← กลับไปหมวดหมู่ทั้งหมด</button>
+            <h3 class="sub-parent-title" id="sub-parent-title">หมวดหมู่</h3>
+          </div>
+          <div class="sub-banner-box">
+            <button type="button" class="sub-all-btn" id="sub-all-btn">
+              <span id="sub-all-text">⚡ ดูสินค้าทั้งหมดในหมวดนี้</span>
+              <span class="sub-all-arrow">›</span>
+            </button>
+          </div>
+          <div class="category-grid" id="subcategory-grid">
+            <!-- Subcategories rendered dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" class="back-to-top-btn" id="back-to-top-btn" aria-label="กลับขึ้นบนสุด" hidden>
+    <span aria-hidden="true">↑</span>
+  </button>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เข้าสู่ระบบผู้ดูแล | คุ้มเว่อร์ 1 บาท</title>
+  <link rel="icon" type="image/png" href="../Logo.png">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <script type="module" src="../assets/js/admin-login.js"></script>
+</head>
+<body class="admin-body">
+  <header class="site-header"><a class="brand" href="../index.html"><img src="../Logo.png" alt="คุ้มเว่อร์ 1 บาท" class="brand-logo"></a><a class="back-link" href="../index.html">กลับหน้าร้าน</a></header>
+  <main class="login-layout">
+    <section class="login-intro"><p class="eyebrow">คุ้มเว่อร์ 1 บาท · ADMIN</p><h1>จัดการสินค้า<br>ได้ในที่เดียว</h1><p>เข้าสู่ระบบสำหรับผู้ดูแลที่ได้รับอนุญาตเท่านั้น</p></section>
+    <form id="login-form" class="admin-panel login-panel">
+      <h2>เข้าสู่ระบบ</h2><p class="panel-hint">ใช้บัญชีผู้ดูแลที่ได้รับการเพิ่มสิทธิ์ไว้แล้ว</p>
+      <label>อีเมล<input name="email" type="email" autocomplete="username" required></label>
+      <label>รหัสผ่าน<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="button button-dark admin-button" type="submit">เข้าสู่ระบบ</button>
+      <p class="form-message" id="login-message" role="status"></p>
+    </form>
+  </main>
+</body>
+</html>

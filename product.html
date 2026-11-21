@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="รายละเอียดสินค้าและแหล่งซื้อจากคุ้มเว่อร์ 1 บาท">
+  <title>รายละเอียดสินค้า | คุ้มเว่อร์ 1 บาท</title>
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="apple-touch-icon" href="Logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#dc2626">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="คุ้มเว่อร์ 1฿">
+  <meta property="og:title" id="og-title" content="รายละเอียดสินค้า | คุ้มเว่อร์ 1 บาท">
+  <meta property="og:description" id="og-desc" content="ดูรายละเอียดราคาและสั่งซื้อที่ร้านค้าต้นทาง">
+  <meta property="og:image" id="og-image" content="Logo.png">
+  <meta property="og:type" content="product">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/desktop.css" media="(min-width: 769px)">
+  <link rel="stylesheet" href="assets/css/mobile.css" media="(max-width: 768px)">
+  <script type="module" src="assets/js/product.js"></script>
+</head>
+<body>
+  <header class="site-header site-header-detail">
+    <a class="header-back-btn" id="header-back-btn" href="index.html" aria-label="กลับไปหน้ารวมสินค้า">
+      <span class="back-arrow" aria-hidden="true">‹</span>
+      <span class="back-text">กลับ</span>
+    </a>
+    <a class="brand" href="index.html"><img src="Logo.png" alt="คุ้มเว่อร์ 1 บาท" class="brand-logo"></a>
+    <nav class="main-nav" aria-label="เมนูหลัก"><a href="index.html">สินค้าทั้งหมด</a></nav>
+  </header>
+  <main class="product-page" id="product-detail"><div class="state-card">กำลังโหลดรายละเอียดสินค้า...</div></main>
+  
+  <!-- Related Deals (Feature 4) -->
+  <section class="related-deals-section" id="related-deals-section" hidden>
+    <div class="related-deals-header">
+      <span class="related-deals-badge">🔥 แนะนำสำหรับคุณ</span>
+      <h2>ดีล 1 บาทอื่นๆ ที่คุณอาจสนใจ</h2>
+      <p>สินค้าราคาประหยัด คัดมาให้แล้วว่าคุ้ม</p>
+    </div>
+    <div class="product-grid" id="related-deals-grid"></div>
+  </section>
+
+  <footer class="site-footer"><a class="brand" href="index.html"><img src="Logo.png" alt="คุ้มเว่อร์ 1 บาท" class="brand-logo"></a><p>การซื้อขายและการจัดส่งดำเนินการโดยร้านค้าต้นทาง</p><small>© <span data-year></span> คุ้มเว่อร์ 1 บาท</small></footer>
+</body>
+</html>
